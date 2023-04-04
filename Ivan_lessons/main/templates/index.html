@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Уроки рисования с Иваном</title>
+</head>
+<body>
+<h1> Уроки рисования с Иваном </h1>
+<p>Ссылки на видеоуроки:</p>
+{% for lesson in lessons %}
+<a href={{lesson.get_absolute_url}}> {{lesson.name}}</a>
+{% endfor %}
+</body>
+</html>

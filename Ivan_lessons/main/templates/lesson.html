@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Видео урок</title>
+</head>
+<body>
+<h1>{{lesson.name}}</h1>
+<img src={{lesson.image.url}} alt = "Здесь должна быть картинка">
+<p>Video must be here </p>
+
+{% if lesson.video %}
+<video src={{lesson.video.url}}></video>
+{% else %}
+<p>Video will be soon</p>
+{% endif %}
+
+<form method="POST" action={{lesson.get_absolute_url}}>
+    <input type="text" placeholder="Введите ваше имя" name="user_name">
+    <textarea placeholder="Напишите комментарий" name="text"> </textarea>
+    {% csrf_token %}
+<button> Отправить комментарий </button>
+</form>
+{% for comment in comments %}
+<h1>{{comment.user}}</h1>
+<h1>{{comment.text}}</h1>
+{% endfor %}
+
+
+<p>{{lesson.description}}</p>
+<a>Вперед</a>
+<a>Назад</a>
+<a href={% url 'main:index' %}> На главную</a>
+
+</body>
+</html>
